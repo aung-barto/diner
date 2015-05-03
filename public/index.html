@@ -7,7 +7,7 @@
 </head>
 <body>
 	<header>
-		<h1><a href="#">Thai Diner</a></h1>
+		<h1><a href="#/dishes">Thai Diner</a></h1>
 		<a href="#/dishes/new" id="newDish">Add New Dish</a>
 	</header>
 	<div class="category">
@@ -38,10 +38,28 @@
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">
-		<span class="dish"> 
+		<span class="dish<%=dish.id%>"> 
 			<img src="<%=dish.image_url%>"><br>
 			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%>
-			<button class="editDish">Edit Dish</button>
+			<a href ="/#dishes/<%=dish.id%>"><button class="editDish">Edit Dish</button></a>
+			<button class="removeDish">Remove Dish</button>
+		</span><br>
+	<!--EDIT A DISH-->
+		<span class="editForm<%=dish.id%>" style="display: none">
+			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>">
+			<input type="text" id="newThaiName<%=dish.id%>" value="<%=dish.thai_name%>">
+			<input type="text" id="newTrans<%=dish.id%>" value="<%=dish.translation%>">
+			<select id="newSpiciness<%=dish.id%>">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>">
+			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>">
+			<button class="updateDish">Update Dish</button>
 		</span>
 	</script>
 	<!--ADD A DISH-->
@@ -62,23 +80,6 @@
 			<input type="text" id="newImage" placeholder="image url">
 			<input type="text" id="categoryId" placeholder="category id">
 			<button class="add">Add New Dish</button>
-		</span>
-	<!--EDIT A DISH-->
-		<span class="editForm" display="none">
-			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>">
-			<input type="text" id="newThaiName<%=dish.id%>" value="<%=dish.thai_name%>">
-			<input type="text" id="newTrans<%=dish.translation%>" value="<%=dish.translation%>">
-			<select id="newSpiciness">
-				<option value="0">0</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>">
-			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>">
-			<button class="updateDish">Update Dish</button>
 		</span>
 	</script>
 

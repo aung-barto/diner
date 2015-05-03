@@ -87,7 +87,6 @@ app.get('/dishes', function(req, res) {
 	});
 });
 
-
 app.get('/dishes/:id', function(req, res) {
 	db.get("SELECT * FROM dishes WHERE id = ?", req.params.id, function(err, row){
 		if(err) {
@@ -98,7 +97,8 @@ app.get('/dishes/:id', function(req, res) {
 });
 
 app.post('/dishes', function(req, res) {
-	db.run("INSERT INTO dishes (name, price, image_url, category_id) VALUES (?,?,?,?)", req.body.name, req.body.price, req.body.image_url, req.body.category_id, function(err) {
+	console.log(req.body);
+	db.run("INSERT INTO dishes (name, thai_name, translation, image_url, price, spicy, category_id) VALUES (?,?,?,?,?,?,?)", req.body.name, req.body.thai_name, req.body.translation, req.body.image_url, req.body.price, req.body.spicy, req.body.category_id, function(err) {
 		if(err) {
 			throw err;
 		}
@@ -114,7 +114,7 @@ app.post('/dishes', function(req, res) {
 
 app.put('/dishes/:id', function(req, res) {
 	var id = req.params.id;
-	db.run("UPDATE dishes SET name = ?, image_url = ?, price = ?, category_id = ? WHERE id = ?", req.body.name, req.body.image_url, req.body.price, req.body.category_id, id, function (err) {
+	db.run("UPDATE dishes SET name = ?, thai_name = ?, translation = ?, image_url = ?, price = ?, spicy = ?, category_id = ? WHERE id = ?", req.body.name, req.body.thai_name, req.body.translation, req.body.image_url, req.body.price, req.body.spicy, req.body.category_id, id, function (err) {
 		if(err) {
 			throw err;
 		}

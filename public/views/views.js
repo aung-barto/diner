@@ -12,62 +12,70 @@
 // 		category.collection
 // 	}
 // })
-
-
-var AllDishView = Backbone.View.extend({
-	el: 'ul.dishes',
+var ShowDishView = Backbone.View.extend({
+	tagName: 'li',
 	template: _.template($('#showDishes').html()),
-	initialize: function(){
-		this.listenTo(this.collection, "sync", this.render);
-	},
-
 	events: {
 		'click button.editDish': 'editDish',
 		'click button.updateDish': 'updateDish',
 		'click button.removeDish': 'removeDish' 
 	},
 
+	updateDish: function(){
+		console.log("update");
+		var updateName = this.$('#newName' + this.model.id).val();
+		var updateThai = this.$('#newThaiName' + this.model.id).val();
+		var updateTranslation = this.$('#newTrans' + this.model.id).val();
+		var updateSpicy = this.$('#newSpiciness' + this.model.id).val();
+		var updatePrice = this.$('#newPrice' + this.model.id).val();
+		var updateImage = this.$('#newImage' + this.model.id).val();
+
+		this.model.set({
+			name: updateName,
+			thai_name: updateThai,
+			translation: updateTranslation,
+			image_url: updateImage,
+			price: updatePrice,
+			spicy: updateSpicy,
+		});
+
+		this.model.save();
+		console.log("it's saved");
+		$('span.editForm'+this.model.id).hide();
+	},
+	
+	editDish: function(){
+		$('span.dish'+this.model.id).remove();
+		$('span.editForm'+this.model.id).show();
+	},
+
 	removeDish: function(){
 		this.model.destroy();
 	},
 
-	updateDish: function(){
-		var newName = this.$('#newName' + this.model.id).val();
-		var newThai = this.$('#newThaiName' + this.model.id).val();
-		var newTranslation = this.$('#newTranslation' + this.model.id).val();
-		var newSpicy = this.$('#spiciness' + this.model.id).val();
-		var newPrice = this.$('#newPrice' + this.model.id).val();
-		var newCat = this.$('#categoryId' + this.model.id).val();
-		var newImage = this.$('#newImage' + this.model.id).val();
+	render: function(){
+		// console.log(this.model);
+		this.$el.html(this.template({dish: this.model.toJSON()}));
+		return this;
+	}
+})
 
-		this.model.set({
-			name: newName,
-			thai_name: newThai,
-			translation: newTranslation,
-			image_url: newImage,
-			price: newPrice,
-			spicy: newSpicy,
-			category_id: newCat
-		});
-
-		this.model.save();
-	},
-
-	editDish: function(){
-		this.$('span.dish').('');
-		this.$('span.editForm').show();
+var AllDishView = Backbone.View.extend({
+	el: 'ul.dishes',
+	template: _.template($('#showDishes').html()),
+	initialize: function(){
+		this.listenTo(this.collection, "sync remove", this.render);
 	},
 
 	render: function(){
 		var dishes = this;
 		dishes.$el.html('');
 		dishes.collection.each(function(dish){
-			dishes.$el.append(dishes.template({dish: dish.toJSON()}));
-			return this;
+			dishes.$el.append(new ShowDishView({model: dish}).render().$el);
 		});
+		return this;
 	}
 });
-
 
 var AddDishView = Backbone.View.extend({
 	//add dish form renders here
