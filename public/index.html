@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
+	<title>Thai Diner</title>
+</head>
+<body>
+	<header>
+		<h1><a href="#">Thai Diner</a></h1>
+		<a href="#/dishes/new" id="newDish">Add New Dish</a>
+	</header>
+	<div class="category">
+	</div>
+	<div class="addDish">
+	</div>
+	<ul class="dishes">
+	</ul>
+
+<!--CATEGORIES TEMPLATES-->
+	<script type="text/template" id="showCategories">
+		<span class="category">
+			<%= category.name %>
+			<button class="editCat">Edit Category</button>
+		</span>
+	</script>
+	<!--ADD A CATEGORY-->
+	<script type="text/template" id="addCat">
+		<span class="addCat">
+			<input type="text" id="newCat" placeholder="category name">
+		</span>
+	</script>
+	<!--EDIT A CATEGORY-->
+	<script type="text/template" id="editCat">
+		<input type="text" id="newName<%=category.id%>" value="<%=category.name%>">
+		<button class="updateCat">Update Category</button>
+	</script>
+
+<!--DISHES TEMPLATES-->
+	<script type="text/template" id="showDishes">
+		<span class="dish"> 
+			<img src="<%=dish.image_url%>"><br>
+			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%>
+			<button class="editDish">Edit Dish</button>
+		</span>
+	</script>
+	<!--ADD A DISH-->
+	<script type="text/template" id="addDishForm">
+		<span class="addForm">
+			<input type="text" id="newName" placeholder="dish name">
+			<input type="text" id="newThaiName" placeholder="dish thai name">
+			<input type="text" id="newTranslation" placeholder="dish translation">
+			<select id="spiciness">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<input type="text" id="newPrice" placeholder="$ price">
+			<input type="text" id="newImage" placeholder="image url">
+			<input type="text" id="categoryId" placeholder="category id">
+			<button class="add">Add New Dish</button>
+		</span>
+	<!--EDIT A DISH-->
+		<span class="editForm" display="none">
+			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>">
+			<input type="text" id="newThaiName<%=dish.id%>" value="<%=dish.thai_name%>">
+			<input type="text" id="newTrans<%=dish.translation%>" value="<%=dish.translation%>">
+			<select id="newSpiciness">
+				<option value="0">0</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+			</select>
+			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>">
+			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>">
+			<button class="updateDish">Update Dish</button>
+		</span>
+	</script>
+
+<!--OTHER SCRIPTS-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+	<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+
+	<script src = "/models/models.js"></script>
+ 	<script src = "/collections/collections.js"></script>
+ 	<script src = "/views/views.js"></script>
+ 	<script src = "/routes/routes.js"></script>
+</body>
+</html>
