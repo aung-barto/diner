@@ -1,8 +1,30 @@
+var CatRoutes = Backbone.Router.extend({
+	routes: {
+		'categories': 'allCategories',
+		// 'categories/new': 'addCategories'
+	},
+
+	allCategories: function(){
+		console.log("all categories");
+		categories.fetch({
+			success: function(model, response){
+				console.log(response);
+				console.log({collection: categories});
+				new AllCatView({collection: categories}).render();
+
+			}
+		});
+	}
+
+	// addCategories: function(){
+	// 	new AddCatView({collection: categories}).render();
+	// }
+});
+
 var DishRoutes = Backbone.Router.extend({
 	routes: {
 		'dishes':'allDishes',
-		'dishes/new': 'addDish',
-		// 'dishes/:id': 'showDish'
+		'dishes/new': 'addDish'
 	},
 
 	allDishes: function(){
@@ -16,7 +38,7 @@ var DishRoutes = Backbone.Router.extend({
 
 	addDish: function(){
 		new AddDishView({collection: dishes}).render();
-	},
+	}
 
 	// showDish: function(id){
 	// 	console.log("hello");
@@ -33,6 +55,7 @@ var DishRoutes = Backbone.Router.extend({
 	// }
 });
 
+var categoryRoutes = new CatRoutes();
 var dishRoutes = new DishRoutes();
 Backbone.history.start();
 

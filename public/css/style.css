@@ -3,6 +3,11 @@ img {
 	height: auto;
 }
 
-span {
+li {
 	display: inline-block;
+	list-style: none;
+}
+
+span {
+	max-width: 300px;
 }

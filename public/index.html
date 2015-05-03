@@ -10,10 +10,10 @@
 		<h1><a href="#/dishes">Thai Diner</a></h1>
 		<a href="#/dishes/new" id="newDish">Add New Dish</a>
 	</header>
-	<div class="category">
-	</div>
-	<div class="addDish">
-	</div>
+	<ul class="catList">
+	</ul>
+	<ul class="addDish">
+	</ul>
 	<ul class="dishes">
 	</ul>
 
@@ -22,6 +22,13 @@
 		<span class="category">
 			<%= category.name %>
 			<button class="editCat">Edit Category</button>
+			<button class="removeCat">Remove Category</button>
+		</span>
+		<!--EDIT A CATEGORY-->
+		<span class="editCatForm" style="display: none">
+			Name:
+			<input type="text" id="newCatName<%=category.id%>" value="<%=category.name%>">
+			<button class="updateCat">Update Category</button>
 		</span>
 	</script>
 	<!--ADD A CATEGORY-->
@@ -30,25 +37,24 @@
 			<input type="text" id="newCat" placeholder="category name">
 		</span>
 	</script>
-	<!--EDIT A CATEGORY-->
-	<script type="text/template" id="editCat">
-		<input type="text" id="newName<%=category.id%>" value="<%=category.name%>">
-		<button class="updateCat">Update Category</button>
-	</script>
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">
 		<span class="dish<%=dish.id%>"> 
 			<img src="<%=dish.image_url%>"><br>
-			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%>
+			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%><br>
 			<a href ="/#dishes/<%=dish.id%>"><button class="editDish">Edit Dish</button></a>
 			<button class="removeDish">Remove Dish</button>
 		</span><br>
 	<!--EDIT A DISH-->
 		<span class="editForm<%=dish.id%>" style="display: none">
-			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>">
-			<input type="text" id="newThaiName<%=dish.id%>" value="<%=dish.thai_name%>">
-			<input type="text" id="newTrans<%=dish.id%>" value="<%=dish.translation%>">
+			Name: 
+			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>"><br>
+			Thai Name: 
+			<input type="text" id="newThaiName<%=dish.id%>" value="<%=dish.thai_name%>"><br>
+			Translation: 
+			<input type="text" id="newTrans<%=dish.id%>" value="<%=dish.translation%>"><br>
+			Spicy Level: 
 			<select id="newSpiciness<%=dish.id%>">
 				<option value="0">0</option>
 				<option value="1">1</option>
@@ -56,9 +62,11 @@
 				<option value="3">3</option>
 				<option value="4">4</option>
 				<option value="5">5</option>
-			</select>
-			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>">
-			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>">
+			</select><br>
+			Price:
+			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>"><br>
+			Image Url:
+			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>"><br>
 			<button class="updateDish">Update Dish</button>
 		</span>
 	</script>

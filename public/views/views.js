@@ -1,17 +1,59 @@
 
-// var CategoryView = Backbone.View.extend({
-// 	el: 'ul.categories',
-// 	template: _.template($('#showCategories').html),
-// 	initialize: function(){
-// 		this.listenTo(this.collection, "sync", this.render);
+// var ShowCatView = Backbone.View.extend({
+// 	tagName: 'li',
+// 	template: _.template($('#showCategories').html()),
+// 	events: {
+// 		'click button.editCat': 'editCat',
+// 		'click button.updateCat': 'updateCat',
+// 		'click button.removeCat': 'removeCat'
+// 	},
+
+// 	updateCat: function(){
+// 		var updateCatName = this.$('#newCatName' + this.model.id).val();
+
+// 		this.model.set({
+// 			name: updateCatName
+// 		});
+
+// 		this.model.save();
+// 		console.log('Category Saved');
+// 		$('span.editCatForm').hide();
+// 	},
+
+// 	editCat: function(){
+// 		$('span.category').remove();
+// 		$('span.editCatForm').show();
+// 	},
+
+// 	removeCat: function(){
+// 		this.model.destroy();
 // 	},
 
 // 	render: function(){
-// 		var category = this;
-// 		category.$el.html('');
-// 		category.collection
+// 		this.$el.html(this.template({category: this.model.toJSON()}));
+// 		return this;
 // 	}
-// })
+// });
+
+var AllCatView = Backbone.View.extend({
+	el: 'ul.catList',
+	template: _.template($('#showCategories').html),
+	initialize: function(){
+		this.listenTo(this.collection, "sync remove", this.render);
+	},
+
+	render: function(){
+		var categories = this;
+		categories.$el.html('');
+		categories.collection.each(function(category){
+			// categories.$el.append(new ShowCatView({model: category}).render().$el);
+			categories.$el.append(categories.template({category: category.toJSON()}));
+			
+		return this;
+		});
+	}
+});
+
 var ShowDishView = Backbone.View.extend({
 	tagName: 'li',
 	template: _.template($('#showDishes').html()),
@@ -22,7 +64,6 @@ var ShowDishView = Backbone.View.extend({
 	},
 
 	updateDish: function(){
-		console.log("update");
 		var updateName = this.$('#newName' + this.model.id).val();
 		var updateThai = this.$('#newThaiName' + this.model.id).val();
 		var updateTranslation = this.$('#newTrans' + this.model.id).val();
@@ -40,7 +81,7 @@ var ShowDishView = Backbone.View.extend({
 		});
 
 		this.model.save();
-		console.log("it's saved");
+		console.log("Dish saved");
 		$('span.editForm'+this.model.id).hide();
 	},
 	

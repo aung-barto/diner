@@ -5,12 +5,12 @@ var DishesCol = Backbone.Collection.extend({
 
 var dishes = new DishesCol();
 
-// var Categories = Backbone.Collection.extend({
-// 	model: Category,
-// 	url: '/categories'
-// });
+var CatCol = Backbone.Collection.extend({
+	model: Category,
+	url: '/categories'
+});
 
-// var categories = new Categories();
+var categories = new CatCol();
 
 // var breakfast = new Categories();
 // var lunch = new Categories();
