@@ -3,11 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
-	<title>Thai Diner</title>
+	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<title>Thainer</title>
 </head>
 <body>
 	<header>
-		<h1><a href="#">Thai Diner</a></h1>
+		<h1><a href="#">Thainer</a></h1>
 		<a href="#categories" id="seeCats">Categories</a>
 		<a href="#dishes" id="seeDishes">Dishes</a>
 	</header>
@@ -20,6 +21,8 @@
 		<!-- RENDER ALL CATEGORIES -->
 		<ul class="catList">
 		</ul>
+		<div class="oneCatList">
+		</div>
 	</div>
 
 	<div class="dishesRender">
@@ -35,7 +38,7 @@
 <!--CATEGORIES TEMPLATES-->
 	<script type="text/template" id="showCategories">
 		<span class="category<%=category.id%>">
-			<%= category.name %>
+		<a href="#categories/<%= category.id %>" class="gotoCat"><%= category.name %></a>
 			<button class="editCat">Edit</button>
 			<button class="removeCat">Remove</button>
 		</span>
@@ -54,12 +57,23 @@
 		</span>
 	</script>
 
+<!-- ONE CATEGORY TEMPLATE -->
+	<script type="text/template" id="oneCategory">
+		<span class="oneCat<%=category.id%>">
+			<%= category.name %>
+		</span>
+	<!-- SHOW DISHES IN THE CATEGORY -->
+		<span class="groupDishes<%=dish.id%>">
+			<%=dish.name%>: <%=dish.thai_name%> S<%=dish.spicy%> $ <%=dish.price%>
+		</span>
+	</script>
+
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">
 		<span class="dish<%=dish.id%>"> 
 			<!-- <img src="<%=dish.image_url%>"><br> -->
-			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%>
+			<%=dish.name%>: <%=dish.thai_name%> S<%=dish.spicy%> $ <%=dish.price%>
 			<button class="editDish">Edit</button>
 			<button class="removeDish">Remove</button>
 		</span><br>

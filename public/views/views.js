@@ -8,17 +8,17 @@ var ShowCatView = Backbone.View.extend({
 		'click button.removeCat': 'removeCat'
 	},
 
-	// updateCat: function(){
-	// 	var updateCatName = this.$('#updateCatName' + this.model.id).val();
+	updateCat: function(){
+		var updateCatName = this.$('#updateCatName' + this.model.id).val();
 
-	// 	this.model.set({
-	// 		name: updateCatName
-	// 	});
+		this.model.set({
+			name: updateCatName
+		});
 
-	// 	this.model.save();
-	// 	console.log('Category Saved');
-	// 	$('span.editCatForm').hide();
-	// },
+		this.model.save();
+		console.log('Category Saved');
+		$('span.editCatForm').hide();
+	},
 
 	editCat: function(){
 		$('span.category' + this.model.id).remove();
@@ -43,13 +43,12 @@ var AllCatView = Backbone.View.extend({
 	},
 
 	render: function(){
-		// $('.dishesRender').html('');
+		$('#newDish').html('');
 		var categories = this;
 		categories.$el.html('');
 		categories.collection.each(function(category){
 			categories.$el.append(new ShowCatView({model: category}).render().$el);
 			// categories.$el.append(categories.template({category: category.toJSON()}));
-			
 		});
 		return this;
 	}
@@ -62,10 +61,8 @@ var AddCatView = Backbone.View.extend({
 		'click button.addCatButt': 'addCategory'
 	},
 	render: function(){
-		console.log("add something");
 		$('addCatForm').html('');
-		// $('.dishesRender').html('');
-		$('.addCat').html('');
+		$('.addCat').html(''); //
 		this.$el.html(this.template());
 		return this;
 	},
@@ -81,6 +78,27 @@ var AddCatView = Backbone.View.extend({
 
 		catNameField.val('');
 
+	}
+});
+
+/////<<<<------INDIVIDUAL CATEGORY------->>>>/////////////
+var CategoryView = Backbone.View.extend({
+	el: '.oneCatList',
+	template: _.template($('#oneCategory').html()),
+	initialize: function(){
+		this.listenTo(this.collection, "sync remove", this.render);
+	},
+
+	render: function(){
+		var groupDishes = this.collection.toJSON());
+		// this.$el.html(this.template({category: this.collection.toJSON()}));
+
+		var dishes = this.$el;
+		dishes.html('');
+		this.collection.each(function(dish){
+			dishes.append(new ShowCatView({model: dish}).render().$el);
+		});
+		return this;
 	}
 });
 

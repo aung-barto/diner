@@ -1,3 +1,7 @@
+body {
+	font-family: 'Permanent Marker', cursive;
+}
+
 img {
 	max-width: 250px;
 	height: auto;
@@ -12,6 +16,16 @@ span {
 	max-width: 300px;
 }
 
-span.categories {
-	
+a {
+	text-decoration: none;
+	padding: 0px 20px 0px 0px;
+	color: black;
+}
+
+a:hover {
+	color: red;
+}
+
+h1 {
+	font-size: 50px;
 }

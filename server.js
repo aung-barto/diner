@@ -24,18 +24,19 @@ app.get('/categories', function(req, res){
 });
 
 app.get('/categories/:id', function(req, res){
-	db.get('SELECT * FROM categories WHERE id = ?', req.params.id, function(err, row){
-		if(err){
-			throw err;
-		}
-		res.json(row);
-		db.get('SELECT * FROM dishes INNER JOIN categories ON dishes.category_id = categories.id;', function(err, rows){
+	// db.get('SELECT * FROM categories WHERE id = ?', req.params.id, function(err, row){
+	// 	if(err){
+	// 		throw err;
+	// 	}
+	console.log(req.params.id);
+		db.all('SELECT * FROM dishes INNER JOIN categories ON dishes.category_id = categories.id WHERE category_id = ?;',req.params.id, function(err, rows){
 			if(err){
 				throw err;
 			}
+			console.log(rows);
 			res.json(rows);
 		});
-	});
+	// });
 });
 
 app.post('/categories', function(req, res){
