@@ -38,14 +38,14 @@
 <!--CATEGORIES TEMPLATES-->
 	<script type="text/template" id="showCategories">
 		<span class="category<%=category.id%>">
-		<a href="#categories/<%= category.id %>" class="gotoCat"><%= category.name %></a>
+		<a href="#categories/<%= category.id %>" class="gotoCat"><%= category.category_name %></a>
 			<button class="editCat">Edit</button>
 			<button class="removeCat">Remove</button>
 		</span>
 		<!--EDIT A CATEGORY-->
 		<span class="editCatForm<%=category.id%>" style="display: none">
 			Name:
-			<input type="text" id="updateCatName<%=category.id%>" value="<%=category.name%>">
+			<input type="text" id="updateCatName<%=category.id%>" value="<%=category.category_name%>">
 			<button class="updateCat">Update</button>
 		</span>
 	</script>
@@ -59,12 +59,13 @@
 
 <!-- ONE CATEGORY TEMPLATE -->
 	<script type="text/template" id="oneCategory">
-		<span class="oneCat<%=category.id%>">
-			<%= category.name %>
+		<span class="oneCat<%=category_dish.id%>">
+			<%= category_dish.category_name %>
 		</span>
 	<!-- SHOW DISHES IN THE CATEGORY -->
-		<span class="groupDishes<%=dish.id%>">
-			<%=dish.name%>: <%=dish.thai_name%> S<%=dish.spicy%> $ <%=dish.price%>
+	
+		<span class="groupDishes<%=category_dish.id%>" style = "display:none">
+			<%=category_dish.name%>: <%=category_dish.thai_name%> S<%=category_dish.spicy%> $ <%=category_dish.price%>
 		</span>
 	</script>
 

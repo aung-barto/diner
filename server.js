@@ -40,7 +40,7 @@ app.get('/categories/:id', function(req, res){
 });
 
 app.post('/categories', function(req, res){
-	db.run("INSERT INTO categories (name) VALUES (?)", req.body.name, function(err,row){
+	db.run("INSERT INTO categories (category_name) VALUES (?)", req.body.category_name, function(err,row){
 		if(err){
 			throw err;
 		}
@@ -56,7 +56,7 @@ app.post('/categories', function(req, res){
 
 app.put('/categories/:id', function(req, res){
 	var id = req.params.id
-	db.run("UPDATE categories SET name = ? WHERE id = ?", req.body.name, id, function(err){
+	db.run("UPDATE categories SET category_name = ? WHERE id = ?", req.body.category_name, id, function(err){
 		if(err){
 			throw err;
 		}

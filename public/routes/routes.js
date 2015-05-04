@@ -56,18 +56,16 @@ var CatNDishRoutes = Backbone.Router.extend({
 
 	showCategory: function(id){
 		var catDishes = new Category({id:id}); 
-		
-		// thisCategory.fetch({
-		// 	success: function(){
-		// 		console.log(thisCategory);
-		// 		new CategoryView({model: thisCategory}).render();
-		// 	}
-		// });
+		catDishes.fetch({
+			success: function(){
+				console.log(thisCategory);
+				new CategoryView({model: thisCategory}).render();
+			}
+		});
 		catDishes.fetch({
 			data: {category_id: id}, 
 			success: function(model, response){
-				console.log("model"+model);
-				console.log(catDishes);
+				// console.log(catDishes);
 				new CategoryView({collection: catDishes}).render();
 			}
 		});

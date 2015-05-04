@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS dishes;
 
 CREATE TABLE categories (
   id INTEGER PRIMARY KEY,
-  name TEXT,
+  category_name TEXT,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

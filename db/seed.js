@@ -1,7 +1,7 @@
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('diner.db');
 
-db.run('INSERT INTO categories (name) VALUES (?)', 'Breakfast', function(err){
+db.run('INSERT INTO categories (category_name) VALUES (?)', 'Breakfast', function(err){
 	if(err){
 		throw err;
 	}
