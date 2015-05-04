@@ -13,15 +13,21 @@
 	</header>
 
 	<div class="catsRender">
+	<!-- ADD NEW CATEGORY -->
 		<a href="#categories/new" id="newCat">Add New Category</a>
+		<div class="addCatForm">
+		</div>
+		<!-- RENDER ALL CATEGORIES -->
 		<ul class="catList">
 		</ul>
 	</div>
 
 	<div class="dishesRender">
+	<!-- ADD NEW DISH -->
 		<a href="#dishes/new" id="newDish">Add New Dish</a>
-		<ul class="addDish">
-		</ul>
+		<div class="addDish">
+		</div>
+		<!-- RENDER ALL DISHES -->
 		<ul class="dishes">
 		</ul>
 	</div>
@@ -36,17 +42,18 @@
 		<!--EDIT A CATEGORY-->
 		<span class="editCatForm<%=category.id%>" style="display: none">
 			Name:
-			<input type="text" id="newCatName<%=category.id%>" value="<%=category.name%>">
+			<input type="text" id="updateCatName<%=category.id%>" value="<%=category.name%>">
 			<button class="updateCat">Update</button>
 		</span>
 	</script>
 	<!--ADD A CATEGORY-->
 	<script type="text/template" id="addCatForm">
 		<span class="addCat">
-			<input type="text" id="newCat" placeholder="category name">
+			<input type="text" id="newCatName" placeholder="category name">
 			<button class="addCatButt">Add New Category</button>
 		</span>
 	</script>
+
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">

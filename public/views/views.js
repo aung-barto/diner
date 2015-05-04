@@ -8,17 +8,17 @@ var ShowCatView = Backbone.View.extend({
 		'click button.removeCat': 'removeCat'
 	},
 
-	updateCat: function(){
-		var updateCatName = this.$('#newCatName' + this.model.id).val();
+	// updateCat: function(){
+	// 	var updateCatName = this.$('#updateCatName' + this.model.id).val();
 
-		this.model.set({
-			name: updateCatName
-		});
+	// 	this.model.set({
+	// 		name: updateCatName
+	// 	});
 
-		this.model.save();
-		console.log('Category Saved');
-		$('span.editCatForm').hide();
-	},
+	// 	this.model.save();
+	// 	console.log('Category Saved');
+	// 	$('span.editCatForm').hide();
+	// },
 
 	editCat: function(){
 		$('span.category' + this.model.id).remove();
@@ -43,9 +43,9 @@ var AllCatView = Backbone.View.extend({
 	},
 
 	render: function(){
+		// $('.dishesRender').html('');
 		var categories = this;
 		categories.$el.html('');
-		$('.dishesRender').remove();
 		categories.collection.each(function(category){
 			categories.$el.append(new ShowCatView({model: category}).render().$el);
 			// categories.$el.append(categories.template({category: category.toJSON()}));
@@ -56,10 +56,35 @@ var AllCatView = Backbone.View.extend({
 });
 
 var AddCatView = Backbone.View.extend({
-	el: 'ul.catList',
-	template: _.template($('.showCategories'))
-})
+	el: '.addCatForm',
+	template: _.template($('#addCatForm').html()),
+	events: {
+		'click button.addCatButt': 'addCategory'
+	},
+	render: function(){
+		console.log("add something");
+		$('addCatForm').html('');
+		// $('.dishesRender').html('');
+		$('.addCat').html('');
+		this.$el.html(this.template());
+		return this;
+	},
 
+	addCategory: function(){
+
+		var catNameField = $('#newCatName');
+		var catName = catNameField.val();
+
+		this.collection.create({
+			name: catName
+		});
+
+		catNameField.val('');
+
+	}
+});
+
+////////<<<<-------DISHES------->>>>//////////////////////
 var ShowDishView = Backbone.View.extend({
 	tagName: 'li',
 	template: _.template($('#showDishes').html()),
@@ -115,9 +140,10 @@ var AllDishView = Backbone.View.extend({
 	},
 
 	render: function(){
+		$('.catList').html('');
+		$('a#newCat').html('');
 		var dishes = this;
 		dishes.$el.html('');
-		$('.catsRender').remove();
 		dishes.collection.each(function(dish){
 			dishes.$el.append(new ShowDishView({model: dish}).render().$el);
 		});
@@ -150,7 +176,7 @@ var AddDishView = Backbone.View.extend({
 		var price = priceField.val();
 		var category = categoryField.val();
 		var imageLink = imageField.val();
-		console.log(thai);
+		// console.log(thai);
 		this.collection.create({
 			name: name,
 			thai_name: thai,
