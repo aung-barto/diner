@@ -4,10 +4,14 @@ img {
 }
 
 li {
-	display: inline-block;
+	/*display: inline-block;*/
 	list-style: none;
 }
 
 span {
 	max-width: 300px;
+}
+
+span.categories {
+	
 }

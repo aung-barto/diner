@@ -7,44 +7,54 @@
 </head>
 <body>
 	<header>
-		<h1><a href="#/dishes">Thai Diner</a></h1>
-		<a href="#/dishes/new" id="newDish">Add New Dish</a>
+		<h1><a href="#">Thai Diner</a></h1>
+		<a href="#categories" id="seeCats">Categories</a>
+		<a href="#dishes" id="seeDishes">Dishes</a>
 	</header>
-	<ul class="catList">
-	</ul>
-	<ul class="addDish">
-	</ul>
-	<ul class="dishes">
-	</ul>
+
+	<div class="catsRender">
+		<a href="#categories/new" id="newCat">Add New Category</a>
+		<ul class="catList">
+		</ul>
+	</div>
+
+	<div class="dishesRender">
+		<a href="#dishes/new" id="newDish">Add New Dish</a>
+		<ul class="addDish">
+		</ul>
+		<ul class="dishes">
+		</ul>
+	</div>
 
 <!--CATEGORIES TEMPLATES-->
 	<script type="text/template" id="showCategories">
-		<span class="category">
+		<span class="category<%=category.id%>">
 			<%= category.name %>
-			<button class="editCat">Edit Category</button>
-			<button class="removeCat">Remove Category</button>
+			<button class="editCat">Edit</button>
+			<button class="removeCat">Remove</button>
 		</span>
 		<!--EDIT A CATEGORY-->
-		<span class="editCatForm" style="display: none">
+		<span class="editCatForm<%=category.id%>" style="display: none">
 			Name:
 			<input type="text" id="newCatName<%=category.id%>" value="<%=category.name%>">
-			<button class="updateCat">Update Category</button>
+			<button class="updateCat">Update</button>
 		</span>
 	</script>
 	<!--ADD A CATEGORY-->
-	<script type="text/template" id="addCat">
+	<script type="text/template" id="addCatForm">
 		<span class="addCat">
 			<input type="text" id="newCat" placeholder="category name">
+			<button class="addCatButt">Add New Category</button>
 		</span>
 	</script>
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">
 		<span class="dish<%=dish.id%>"> 
-			<img src="<%=dish.image_url%>"><br>
-			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%><br>
-			<a href ="/#dishes/<%=dish.id%>"><button class="editDish">Edit Dish</button></a>
-			<button class="removeDish">Remove Dish</button>
+			<!-- <img src="<%=dish.image_url%>"><br> -->
+			<%= dish.name %>: <%= dish.thai_name %> <%=dish.spicy%> $ <%=dish.price%>
+			<button class="editDish">Edit</button>
+			<button class="removeDish">Remove</button>
 		</span><br>
 	<!--EDIT A DISH-->
 		<span class="editForm<%=dish.id%>" style="display: none">
@@ -67,7 +77,7 @@
 			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>"><br>
 			Image Url:
 			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>"><br>
-			<button class="updateDish">Update Dish</button>
+			<button class="updateDish">Update</button>
 		</span>
 	</script>
 	<!--ADD A DISH-->
