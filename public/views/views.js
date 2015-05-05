@@ -67,7 +67,7 @@ var CategoryView = Backbone.View.extend({
 		'click button.editCat': 'editCat',
 		'click button.updateCat': 'updateCat',
 		'click button.removeCat': 'removeCat',
-		'click .toggleDish': 'showD'
+		'click a': 'showD'
 	},
 
 	updateCat: function(){
@@ -135,6 +135,7 @@ var ShowDishView = Backbone.View.extend({
 		var updateSpicy = this.$('#newSpiciness' + this.model.id).val();
 		var updatePrice = this.$('#newPrice' + this.model.id).val();
 		var updateImage = this.$('#newImage' + this.model.id).val();
+		var updateCategory = this.$('#newCategory' + this.model.id).val();
 
 		this.model.set({
 			name: updateName,
@@ -143,6 +144,7 @@ var ShowDishView = Backbone.View.extend({
 			image_url: updateImage,
 			price: updatePrice,
 			spicy: updateSpicy,
+			category_id: updateCategory
 		});
 
 		this.model.save();

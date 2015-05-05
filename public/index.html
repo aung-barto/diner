@@ -58,15 +58,15 @@
 <!-- ONE CATEGORY TEMPLATE -->
 	<script type="text/template" id="oneCategory">
 		<span class="oneCat<%=category.id%>">
-			<a href="#categories/<%=category.id%>" class="toggleDish"><%= category.category_name %></a>
+			<a href="#categories/<%=category.id%>" id="toggleDish<%=category.id%>"><%= category.category_name %></a>
 		</span>
 	</script>
 	<!-- SHOW DISHES IN THE CATEGORY -->
-	<script type="text/template" id="manyDishes">
-		<!-- <span class="groupDishes<%=category_dish.id%>"> -->
+	<!--<script type="text/template" id="manyDishes">
+		 <span class="groupDishes<%=category_dish.id%>">
 			<li><%=category_dish.name%>: <%=category_dish.thai_name%> S<%=category_dish.spicy%> $ <%=category_dish.price%></li>
-		<!-- </span> -->
-	</script>
+		</span> 
+	</script>-->
 
 
 <!--DISHES TEMPLATES-->
@@ -80,11 +80,11 @@
 	<!--EDIT A DISH-->
 		<span class="editForm<%=dish.id%>" style="display: none">
 			Name: 
-			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>"><br>
+			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>">
 			Thai Name: 
 			<input type="text" id="newThaiName<%=dish.id%>" value="<%=dish.thai_name%>"><br>
 			Translation: 
-			<input type="text" id="newTrans<%=dish.id%>" value="<%=dish.translation%>"><br>
+			<input type="text" id="newTrans<%=dish.id%>" value="<%=dish.translation%>">
 			Spicy Level: 
 			<select id="newSpiciness<%=dish.id%>">
 				<option value="0">0</option>
@@ -95,9 +95,12 @@
 				<option value="5">5</option>
 			</select><br>
 			Price:
-			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>"><br>
+			<input type="text" id="newPrice<%=dish.id%>" value="<%=dish.price%>">
 			Image Url:
 			<input type="text" id="newImage<%=dish.id%>" value="<%=dish.image_url%>"><br>
+			Category:
+			<input type="text" id="newCategory<%=dish.id%>" value="<%=dish.category_id%>"><br>
+
 			<button class="updateDish">Update</button>
 		</span>
 	</script>
@@ -126,6 +129,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
 	<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/draggabilly/1.2.0/draggabilly.pkgd.min.js"></script>
 
 	<script src = "/models/models.js"></script>
  	<script src = "/collections/collections.js"></script>
