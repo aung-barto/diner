@@ -1,64 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<!-- saved from url=(0023)http://localhost:3000/# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta charset="UTF-8">
-	<meta charset="UTF+e204">
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
+	<link rel="stylesheet" type="text/css" href="./Thainer_files/style.css">
 	<!-- FONTS -->
-	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<link href="./Thainer_files/css" rel="stylesheet" type="text/css">
+	
+	<!-- SEMANTIC -->
+	<link href="./Thainer_files/checkbox.css" rel="stylesheet" type="text/css">
+	<link href="./Thainer_files/css(1)" rel="stylesheet" type="text/css">
 	
 	<title>Thainer</title>
 </head>
 <body>
+	<!-- <div class="ui toggle checkbox">
+	    <input type="checkbox" name="public">
+	    <label></label>
+	</div> -->
 	<header>
 	<p class="hour">Hours: Sunset to Sunrise</p>
-		<div class="links">
-			<h1><a href="#" id="title">Thainer</a></h1>
-			<a href="#categories" id="seeCats">Menu</a>
-			<a href="#dishes" id="seeDishes">Dishes</a>
-			<a href="#categories/new" id="newCat">Add New Category</a>
-			<a href="#dishes/new" id="newDish">Add New Dish</a>
+		<div class="links" style="display: none;">
+			<h1><a href="./Thainer_files/Thainer.html" id="title">Thainer</a></h1>
+			<a href="http://localhost:3000/#categories" id="seeCats">Menu</a>
+			<a href="http://localhost:3000/#dishes" id="seeDishes">Dishes</a>
+			<a href="http://localhost:3000/#categories/new" id="newCat" style="display: none;">Add New Category</a>
+			<a href="http://localhost:3000/#dishes/new" id="newDish" style="display: none;">Add New Dish</a>
 		</div>
 	</header>
-	<div class="coverImage" style="display:none">
-	</div>
-	<div class="bg">
+	<div class="coverImage" style="">
 	</div>
 	<!-- RENDER OPENING PAGE -->
 		<div class="open">
-		</div>
-
-	<div class="background">
-		<!-- ADD NEW CATEGORY -->
-			<div class="addCatForm">
+		<div class="row">
+	    	<div class="col-md-10 col-md-offset-2">
+				<h1 id="coverTitle">Welcome To Thainer</h1>
+				<center><a href="http://localhost:3000/#categories" id="menuLink">SEE OUR MENU</a></center>
 			</div>
-
-			<!-- RENDER ALL CATEGORIES -->
-			<ul class="catList">
-			</ul>
-
-		<div class="dishesRender">
-		<!-- ADD NEW DISH -->
-			<div class="addDish">
-			</div>
-
-			<!-- RENDER ALL DISHES -->
-			<ul class="dishes">
-			</ul>
 		</div>
 	</div>
+
+	<!-- ADD NEW CATEGORY -->
+		<div class="addCatForm">
+		</div>
+
+		<!-- RENDER ALL CATEGORIES -->
+		<ul class="catList">
+		</ul>
+
+	<div class="dishesRender">
+	<!-- ADD NEW DISH -->
+		<div class="addDish">
+		</div>
+
+		<!-- RENDER ALL DISHES -->
+		<ul class="dishes">
+		</ul>
+	</div>
+
 <!-- OPENING PAGE TEMPLATE -->
 	<script type="text/template" id="cover">
 		<div class="row">
-	    	<div class="col-md-10 col-md-offset-1">
+	    	<div class="col-md-10 col-md-offset-2">
 				<h1 id="coverTitle">Welcome To Thainer</h1>
-			</div>
-			<div class="col-md-2 col-md-offset-5">
-				<a href="#categories" id="menuLink">SEE OUR MENU</a>
+				<center><a href="#categories" id="menuLink">SEE OUR MENU</a></center>
 			</div>
 		</div>
 	</script>
@@ -74,15 +82,6 @@
 
 <!-- ONE CATEGORY TEMPLATE -->
 	<script type="text/template" id="oneCategory">
-		<div class="lock">
-			<span class="glyphicons glyphicons-lock">
-				<img src="images/glyphicons-204-lock.png" width="10px">
-			</span>
-			<span class="glyphicons glyphicons-unlock">
-				<img src="images/glyphicons-205-unlock.png" width="10px" style="display:none">
-			</span>
-		</div>
-
 		<span class="oneCat<%=category.id%>">
 			<a href="#categories/<%=category.id%>" id="toggleDish<%=category.id%>"><%= category.category_name %></a>
 			<button class="editCat" style="display:none">Edit</button>
@@ -102,8 +101,8 @@
 		<span class="dish<%=dish.id%> draggable"> 
 			<!-- <img src="<%=dish.image_url%>"><br> -->
 			<%=dish.name%>: <%=dish.thai_name%> <%=dish.spicy%> $ <%=dish.price%>
-			<button class="editDish" style="display:none">Edit</button>
-			<button class="removeDish" style="display:none">Remove</button>
+			<button class="editDish">Edit</button>
+			<button class="removeDish">Remove</button>
 		</span><br>
 	<!--EDIT A DISH-->
 		<span class="editForm<%=dish.id%>" style="display: none">
@@ -154,18 +153,19 @@
 	</script>
 
 <!--OTHER SCRIPTS-->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
-	<script src="http://documentcloud.github.com/backbone/backbone-min.js"></script>
+	<script src="./Thainer_files/jquery.min.js"></script>
+	<script src="./Thainer_files/underscore-min.js"></script>
+	<script src="./Thainer_files/backbone-min.js"></script>
 	<!-- BOOTSTRAP -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="./Thainer_files/jquery.min(1).js"></script>
+    <script src="./Thainer_files/bootstrap.min.js"></script>
     <!-- DRAGGABILLY -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/draggabilly/1.2.0/draggabilly.pkgd.min.js"></script>
+	<script src="./Thainer_files/draggabilly.pkgd.min.js"></script>
+	<script src="./Thainer_files/checkbox.js"></script>
 
-	<script src = "/models/models.js"></script>
- 	<script src = "/collections/collections.js"></script>
- 	<script src = "/views/views.js"></script>
- 	<script src = "/routes/routes.js"></script>
-</body>
-</html>
+	<script src="./Thainer_files/models.js"></script>
+ 	<script src="./Thainer_files/collections.js"></script>
+ 	<script src="./Thainer_files/views.js"></script>
+ 	<script src="./Thainer_files/routes.js"></script>
+
+</body></html>

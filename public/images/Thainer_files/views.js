@@ -1,5 +1,3 @@
-
-
 var OpeningView = Backbone.View.extend({
 	el: '.open',
 	template: _.template($('#cover').html()),
@@ -21,6 +19,7 @@ var AllCatView = Backbone.View.extend({
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenToOnce(dishes, "sync remove", this.render);
 	},
+
 
 		//rendering just categories
 	render: function(){
@@ -85,8 +84,7 @@ var CategoryView = Backbone.View.extend({
 		'click button.updateCat': 'updateCat',
 		'click button.removeCat': 'removeCat',
 		'click a': 'showD',
-		'click .glyphicons-lock': 'toggleUnLock',
-		'click .glyphicons-unlock': 'toggleLock' 
+		'click .checkbox': 'showButtons'
 	},
 
 	updateCat: function(){
@@ -117,20 +115,6 @@ var CategoryView = Backbone.View.extend({
 	showButtons: function(){
 		$('.editCat').toggle();
 		$('.removeCat').toggle();
-	},
-
-	toggleUnLock: function(){
-		$('.glyphicons-lock').hide();
-		$('.glyphicons-unlock').show();
-		$('.editCat').show();
-		$('.removeCat').show();
-	},
-
-	toggleLock: function(){
-		$('.glyphicons-unlock').hide();
-		$('.glyphicons-lock').show();
-		$('.editDish').show();
-		$('.removeDish').show();
 	},
 
 	render: function(){
@@ -166,9 +150,7 @@ var ShowDishView = Backbone.View.extend({
 	events: {
 		'click button.editDish': 'editDish',
 		'click button.updateDish': 'updateDish',
-		'click button.removeDish': 'removeDish',
-		'click .glyphicons-lock': 'toggleUnLock',
-		'click .glyphicons-unlock': 'toggleLock' 
+		'click button.removeDish': 'removeDish' 
 	},
 	//grab updated info from text fields
 	updateDish: function(){
@@ -202,20 +184,6 @@ var ShowDishView = Backbone.View.extend({
 
 	removeDish: function(){
 		this.model.destroy();
-	},
-
-	toggleUnLock: function(){
-		$('.glyphicons-lock').hide();
-		$('.glyphicons-unlock').show();
-		$('.editDish').show();
-		$('.removeDish').show();
-	},
-
-	toggleLock: function(){
-		$('.glyphicons-unlock').hide();
-		$('.glyphicons-lock').show();
-		$('.editDish').show();
-		$('.removeDish').show();
 	},
 
 	render: function(){
