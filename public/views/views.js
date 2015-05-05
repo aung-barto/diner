@@ -4,6 +4,7 @@ var OpeningView = Backbone.View.extend({
 	el: '.open',
 	template: _.template($('#cover').html()),
 	render: function(){
+		$('.background').hide();
 		$('.coverImage').show();
 		$('.links').hide();
 		$('#newCat').hide();
@@ -19,7 +20,7 @@ var AllCatView = Backbone.View.extend({
 	initialize: function(){
 		//listening to categories and dishes
 		this.listenTo(this.collection, "sync remove", this.render);
-		this.listenToOnce(dishes, "sync remove", this.render);
+		this.listenToOnce(dishes, "sync remove");
 	},
 
 		//rendering just categories
@@ -31,6 +32,7 @@ var AllCatView = Backbone.View.extend({
 		$('.addDish').hide();
 		$('.dishes').html('');
 		// //show Add New Category link and form
+		$('.background').show();
 		$('#newCat').show();
 		$('.addCatForm').show();
 
@@ -60,6 +62,7 @@ var AddCatView = Backbone.View.extend({
 	},
 	//grab updated info here
 	addCategory: function(){
+		$('.addCat').hide();
 		var catNameField = $('#newCatName');
 		var catName = catNameField.val();
 
@@ -85,8 +88,8 @@ var CategoryView = Backbone.View.extend({
 		'click button.updateCat': 'updateCat',
 		'click button.removeCat': 'removeCat',
 		'click a': 'showD',
-		'click .glyphicons-lock': 'toggleUnLock',
-		'click .glyphicons-unlock': 'toggleLock' 
+		'click .lockLock': 'toggleUnLock',
+		'click .unlock': 'toggleLock' 
 	},
 
 	updateCat: function(){
@@ -114,23 +117,16 @@ var CategoryView = Backbone.View.extend({
 		$('#show'+this.model.id).toggle();
 	},
 
-	showButtons: function(){
-		$('.editCat').toggle();
-		$('.removeCat').toggle();
-	},
-
 	toggleUnLock: function(){
-		$('.glyphicons-lock').hide();
-		$('.glyphicons-unlock').show();
+		$('.lockLock').toggleClass('unlock');
 		$('.editCat').show();
 		$('.removeCat').show();
 	},
 
 	toggleLock: function(){
-		$('.glyphicons-unlock').hide();
-		$('.glyphicons-lock').show();
-		$('.editDish').show();
-		$('.removeDish').show();
+		$('.unLock').toggleClass('lockLock');
+		$('.editCat').hide();
+		$('.removeCat').hide();
 	},
 
 	render: function(){
@@ -166,9 +162,7 @@ var ShowDishView = Backbone.View.extend({
 	events: {
 		'click button.editDish': 'editDish',
 		'click button.updateDish': 'updateDish',
-		'click button.removeDish': 'removeDish',
-		'click .glyphicons-lock': 'toggleUnLock',
-		'click .glyphicons-unlock': 'toggleLock' 
+		'click button.removeDish': 'removeDish'
 	},
 	//grab updated info from text fields
 	updateDish: function(){
@@ -202,20 +196,6 @@ var ShowDishView = Backbone.View.extend({
 
 	removeDish: function(){
 		this.model.destroy();
-	},
-
-	toggleUnLock: function(){
-		$('.glyphicons-lock').hide();
-		$('.glyphicons-unlock').show();
-		$('.editDish').show();
-		$('.removeDish').show();
-	},
-
-	toggleLock: function(){
-		$('.glyphicons-unlock').hide();
-		$('.glyphicons-lock').show();
-		$('.editDish').show();
-		$('.removeDish').show();
 	},
 
 	render: function(){
