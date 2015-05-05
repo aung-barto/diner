@@ -4,6 +4,7 @@ var DishesCol = Backbone.Collection.extend({
 });
 
 var dishes = new DishesCol();
+dishes.fetch();
 
 var CatCol = Backbone.Collection.extend({
 	model: Category,

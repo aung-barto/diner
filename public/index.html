@@ -13,7 +13,7 @@
 		<a href="#dishes" id="seeDishes">Dishes</a>
 	</header>
 
-	<div class="catsRender">
+	<!-- <div class="catsRender"> -->
 	<!-- ADD NEW CATEGORY -->
 		<a href="#categories/new" id="newCat">Add New Category</a>
 		<div class="addCatForm">
@@ -21,9 +21,9 @@
 		<!-- RENDER ALL CATEGORIES -->
 		<ul class="catList">
 		</ul>
-		<div class="oneCatList">
-		</div>
-	</div>
+	<!--	<div class="oneCatList">
+		</div> -->
+	<!-- </div> --> 
 
 	<div class="dishesRender">
 	<!-- ADD NEW DISH -->
@@ -37,15 +37,15 @@
 
 <!--CATEGORIES TEMPLATES-->
 	<script type="text/template" id="showCategories">
-		<span class="category<%=category.id%>">
-		<li><a href="#categories/<%= category.id %>" class="gotoCat"><%= category.category_name %></a></li>
-		<!-- <button class="editCat">Edit</button>
-			<button class="removeCat">Remove</button> -->
+		<span class="category<%=category_dish.id%>">
+		<li><a href="#categories/<%= category_dish.id %>" class="gotoCat"><%= category.category_name %></a>
+			<button class="editCat">Edit</button>
+			<button class="removeCat">Remove</button></li>
 		</span>
 		<!--EDIT A CATEGORY-->
-		<span class="editCatForm<%=category.id%>" style="display: none">
+		<span class="editCatForm<%=category_dish.id%>" style="display: none">
 			Name:
-			<input type="text" id="updateCatName<%=category.id%>" value="<%=category.category_name%>">
+			<input type="text" id="updateCatName<%=category_dish.id%>" value="<%=category_dish.category_name%>">
 			<button class="updateCat">Update</button>
 		</span>
 	</script>
@@ -58,15 +58,16 @@
 	</script>
 
 <!-- ONE CATEGORY TEMPLATE -->
-		<!-- <span class="oneCat<%=category_dish.id%>">
-			<%= category_dish.category_name %>
-		</span> -->
-	<!-- SHOW DISHES IN THE CATEGORY -->
-	
 	<script type="text/template" id="oneCategory">
-		<span class="groupDishes<%=category_dish.id%>">
-			<li><%=category_dish.name%>: <%=category_dish.thai_name%> S<%=category_dish.spicy%> $ <%=category_dish.price%></li>
+		<span class="oneCat<%=category.id%>">
+			<a href="#categories/<%=category.id%>"><%= category.category_name %></a>
 		</span>
+	</script>
+	<!-- SHOW DISHES IN THE CATEGORY -->
+	<script type="text/template" id="manyDishes">
+		<!-- <span class="groupDishes<%=category_dish.id%>"> -->
+			<li><%=category_dish.name%>: <%=category_dish.thai_name%> S<%=category_dish.spicy%> $ <%=category_dish.price%></li>
+		<!-- </span> -->
 	</script>
 
 
