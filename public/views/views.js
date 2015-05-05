@@ -21,6 +21,7 @@ var AllCatView = Backbone.View.extend({
 		categories.html('');
 		this.collection.each(function(category){
 			categories.append(new CategoryView({model: category}).render().$el);
+			//KEEP JUST IN CASE
 			// categories.append(this.template({category: category.toJSON()}));
 		});
 		return this;
