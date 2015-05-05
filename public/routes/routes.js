@@ -8,8 +8,6 @@ var CatRoutes = Backbone.Router.extend({
 	allCategories: function(){
 		categories.fetch({
 			success: function(model, response){
-				console.log(response);
-				console.log({collection: categories});
 				new AllCatView({collection: categories}).render();
 			}
 		});
@@ -39,6 +37,10 @@ var DishRoutes = Backbone.Router.extend({
 	}
 });
 
+var categoryRoutes = new CatRoutes();
+var dishRoutes = new DishRoutes();
+Backbone.history.start();
+
 // var CatNDishRoutes = Backbone.Router.extend({
 // 	routes: {
 // 		'categories/:id': 'showCategory'
@@ -59,10 +61,6 @@ var DishRoutes = Backbone.Router.extend({
 // });
 
 // var catNDishRoutes = new CatNDishRoutes();
-var categoryRoutes = new CatRoutes();
-var dishRoutes = new DishRoutes();
-Backbone.history.start();
-
 
 	// showCategory: function(){
 	// 	var thisCategory = new Category({id:id}); 
