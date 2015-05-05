@@ -1,22 +1,23 @@
 var AllCatView = Backbone.View.extend({
 	el: 'ul.catList',
-	template: _.template($('#showCategories').html()),
+	// template: _.template($('#showCategories').html()),
 	initialize: function(){
 		//listening to categories and dishes
 		this.listenTo(this.collection, "sync remove", this.render);
 		this.listenToOnce(dishes, "sync remove", this.render);
 	},
 
-	render: function(){
+
+		//rendering just categories
+		render: function(){
 		//hide Add New Dish link and form
 		$('#newDish').hide();
 		$('.addDish').hide();
 		$('.dishes').html('');
-		//show Add New Category link and form
+		// //show Add New Category link and form
 		$('#newCat').show();
 		$('.addCatForm').show();
 
-		//rendering just categories
 		var categories = this.$el;
 		categories.html('');
 		this.collection.each(function(category){
@@ -83,7 +84,7 @@ var CategoryView = Backbone.View.extend({
 	},
 
 	editCat: function(){
-		$('span.category' + this.model.id).remove();
+		$('span.oneCat' + this.model.id).remove();
 		$('span.editCatForm' + this.model.id).show();
 	},
 
@@ -102,6 +103,8 @@ var CategoryView = Backbone.View.extend({
 		console.log(this.model.id);
 		//looping through each dishes to find match to category_id
 		var $ul = $('<ul>').attr('id','show' + this.model.id).attr('style', 'display: none');
+		// var elem = document.querySelector('.draggable');
+		// var draggie = new Draggabilly('.draggable');
 		// $('.showCat').'click'(function(){
 		
 		// });

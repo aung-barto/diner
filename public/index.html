@@ -4,6 +4,10 @@
 	<meta charset="UTF-8">
 	<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
 	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<link href='https://cdnjs.com/libraries/semantic-ui'/>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/components/checkbox.js'/>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/components/checkbox.min.css'/>
+	<link href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.12.1/components/checkbox.min.js'/>
 	<title>Thainer</title>
 </head>
 <body>
@@ -11,6 +15,10 @@
 		<h1><a href="#">Thainer</a></h1>
 		<a href="#categories" id="seeCats">Categories</a>
 		<a href="#dishes" id="seeDishes">Dishes</a>
+		<div class="ui toggle checkbox">
+		    <input type="checkbox" name="public">
+		    <label>Subscribe to weekly newsletter</label>
+		</div>
 	</header>
 
 	<!-- <div class="catsRender"> -->
@@ -34,19 +42,6 @@
 	</div>
 
 <!--CATEGORIES TEMPLATES-->
-	<script type="text/template" id="showCategories">
-		<span class="category<%=category_dish.id%>">
-		<li><a href="#categories/<%= category_dish.id %>" class="gotoCat"><%= category.category_name %></a>
-			<button class="editCat">Edit</button>
-			<button class="removeCat">Remove</button></li>
-		</span>
-		<!--EDIT A CATEGORY-->
-		<span class="editCatForm<%=category_dish.id%>" style="display: none">
-			Name:
-			<input type="text" id="updateCatName<%=category_dish.id%>" value="<%=category_dish.category_name%>">
-			<button class="updateCat">Update</button>
-		</span>
-	</script>
 	<!--ADD A CATEGORY-->
 	<script type="text/template" id="addCatForm">
 		<span class="addCat">
@@ -59,19 +54,20 @@
 	<script type="text/template" id="oneCategory">
 		<span class="oneCat<%=category.id%>">
 			<a href="#categories/<%=category.id%>" id="toggleDish<%=category.id%>"><%= category.category_name %></a>
+			<button class="editCat">Edit</button>
+			<button class="removeCat">Remove</button>
+		</span>
+		<!--EDIT A CATEGORY-->
+		<span class="editCatForm<%=category.id%>" style="display: none">
+			Name:
+			<input type="text" id="updateCatName<%=category.id%>" value="<%=category.category_name%>">
+			<button class="updateCat">Update</button>
 		</span>
 	</script>
-	<!-- SHOW DISHES IN THE CATEGORY -->
-	<!--<script type="text/template" id="manyDishes">
-		 <span class="groupDishes<%=category_dish.id%>">
-			<li><%=category_dish.name%>: <%=category_dish.thai_name%> S<%=category_dish.spicy%> $ <%=category_dish.price%></li>
-		</span> 
-	</script>-->
-
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">
-		<span class="dish<%=dish.id%>"> 
+		<span class="dish<%=dish.id%> draggable"> 
 			<!-- <img src="<%=dish.image_url%>"><br> -->
 			<%=dish.name%>: <%=dish.thai_name%> S<%=dish.spicy%> $ <%=dish.price%>
 			<button class="editDish">Edit</button>
