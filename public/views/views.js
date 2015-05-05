@@ -58,15 +58,16 @@ var AddCatView = Backbone.View.extend({
 var CategoryView = Backbone.View.extend({
 	tagName: 'div',
 	template1: _.template($('#oneCategory').html()),
-	template2: _.template($('#manyDishes').html()),
-	initialize: function(){
+	// template2: _.template($('#manyDishes').html()),
+	// initialize: function(){
 		// this.listenTo(this.collection, "sync remove", this.render);
-	},
+	// },
 
 	events: {
 		'click button.editCat': 'editCat',
 		'click button.updateCat': 'updateCat',
-		'click button.removeCat': 'removeCat'
+		'click button.removeCat': 'removeCat',
+		'click .toggleDish': 'showD'
 	},
 
 	updateCat: function(){
@@ -90,13 +91,20 @@ var CategoryView = Backbone.View.extend({
 		this.model.destroy();
 	},
 
+	showD: function(){
+		$('#show'+this.model.id).toggle();
+	},
+
 	render: function(){
 		console.log("category view render");
 		//rendering individual category, grabbing their category_id
 		this.$el.html(this.template1({category: this.model.toJSON()}));
-		
+		console.log(this.model.id);
 		//looping through each dishes to find match to category_id
-		var $ul = $('<ul>').addClass("show");
+		var $ul = $('<ul>').attr('id','show' + this.model.id).attr('style', 'display: none');
+		// $('.showCat').'click'(function(){
+		
+		// });
 		dishes.each(function(item){
 			if(item.attributes.category_id === this.model.id){
 				//adding matched showDishView to ul

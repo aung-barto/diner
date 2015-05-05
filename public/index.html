@@ -9,7 +9,7 @@
 <body>
 	<header>
 		<h1><a href="#">Thainer</a></h1>
-		<a href="#categories" id="seeCats">Menu</a>
+		<a href="#categories" id="seeCats">Categories</a>
 		<a href="#dishes" id="seeDishes">Dishes</a>
 	</header>
 
@@ -58,7 +58,7 @@
 <!-- ONE CATEGORY TEMPLATE -->
 	<script type="text/template" id="oneCategory">
 		<span class="oneCat<%=category.id%>">
-			<a href="#categories/<%=category.id%>"><%= category.category_name %></a>
+			<a href="#categories/<%=category.id%>" class="toggleDish"><%= category.category_name %></a>
 		</span>
 	</script>
 	<!-- SHOW DISHES IN THE CATEGORY -->
