@@ -131,18 +131,20 @@ var CategoryView = Backbone.View.extend({
 
 	render: function(){
 		console.log("category view render");
+
 		//rendering individual category, grabbing their category_id
 		this.$el.html(this.template1({category: this.model.toJSON()}));
-		console.log(this.model.id);
+		// console.log(this.model.id);
+
 		//looping through each dishes to find match to category_id
 		var $ul = $('<ul>').attr('id','show' + this.model.id).attr('style', 'display: none');
 
 		// var elem = document.querySelector('.draggable');
 		// var draggie = new Draggabilly('.draggable');
 		// $('.showCat').'click'(function(){
-		
 		// });
 		dishes.each(function(item){
+			console.log(item.attributes.spicy);
 			if(item.attributes.category_id === this.model.id){
 				//adding matched showDishView to ul
 				$ul.append(new ShowDishView({model: item}).render().$el) ;
@@ -162,7 +164,11 @@ var ShowDishView = Backbone.View.extend({
 	events: {
 		'click button.editDish': 'editDish',
 		'click button.updateDish': 'updateDish',
-		'click button.removeDish': 'removeDish'
+		'click button.removeDish': 'removeDish',
+		'click .lockLock': 'toggleUnLock',
+		'click .unlock': 'toggleLock',
+		'click .dishName': 'imagePopUp',
+		'click .imageLo': 'imageHide'
 	},
 	//grab updated info from text fields
 	updateDish: function(){
@@ -198,8 +204,28 @@ var ShowDishView = Backbone.View.extend({
 		this.model.destroy();
 	},
 
+	toggleUnLock: function(){
+		$('.lockLock').toggleClass('unlock');
+		$('.editDish').show();
+		$('.removeDish').show();
+	},
+
+	toggleLock: function(){
+		$('.unLock').toggleClass('lockLock');
+		$('.editDish').hide();
+		$('.removeDish').hide();
+	},
+
+	imagePopUp: function(){
+		$('.dishImage'+ this.model.id).toggle();
+	},
+
+	imageHide: function(){
+		$('.dishImage' + this.model.id).hide();
+	},
+
 	render: function(){
-		// console.log(this.model);
+		// console.log(this.model.toJSON().image_url);
 		this.$el.html(this.template({dish: this.model.toJSON()}));
 		return this;
 	}

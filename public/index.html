@@ -26,14 +26,15 @@
 	</header>
 	<div class="coverImage" style="display:none">
 	</div>
+	
 	<div class="bg">
 	</div>
 	<!-- RENDER OPENING PAGE -->
 		<div class="open">
 		</div>
 
-	<div class="background">
 		<div class="dishesRender">
+			<div class="background">
 		<!-- ADD NEW CATEGORY -->
 			<div class="addCatForm">
 			</div>
@@ -47,10 +48,11 @@
 			</div>
 
 			<!-- RENDER ALL DISHES -->
-			<ul class="dishes">
-			</ul>
+				<ul class="dishes">
+				</ul>
+			</div>
 		</div>
-	</div>
+
 <!-- OPENING PAGE TEMPLATE -->
 	<script type="text/template" id="cover">
 		<div class="row">
@@ -68,7 +70,7 @@
 	<script type="text/template" id="addCatForm">
 		<span class="addCat">
 			<input type="text" id="newCatName" placeholder="category name">
-			<button class="addCatButt">Add New Category</button>
+			<button class="addCatButt btn btn-default btn-xs">Add New Category</button>
 		</span>
 	</script>
 
@@ -81,25 +83,45 @@
 
 		<span class="oneCat<%=category.id%>">
 			<a href="#categories/<%=category.id%>" id="toggleDish<%=category.id%>"><%= category.category_name %></a>
-				<button class="editCat" style="display:none">Edit</button>
-				<button class="removeCat" style="display:none">Remove</button>
+				<button class="editCat btn btn-default btn-xs" style="display:none">Edit</button>
+				<button class="removeCat btn btn-default btn-xs" style="display:none">Remove</button>
 		</span>
 
 		<!--EDIT A CATEGORY-->
 		<span class="editCatForm<%=category.id%>" style="display: none">
 			Name:
 			<input type="text" id="updateCatName<%=category.id%>" value="<%=category.category_name%>">
-			<button class="updateCat">Update</button>
+			<button class="updateCat btn btn-default btn-xs">Update</button>
 		</span>
 	</script>
 
 <!--DISHES TEMPLATES-->
 	<script type="text/template" id="showDishes">
+		<span class="glyphicons glyphicons-lock">
+			<div class="lockLock">
+			</div>
+		</span>
+
+		<div class="dishImage<%=dish.id%> imageLo" style="display:none">
+			<img src="<%=dish.image_url%>"><br>
+			<%=dish.translation%>
+		</div>
 		<span class="dish<%=dish.id%> ui-widget-content"> 
-			<!-- <img src="<%=dish.image_url%>"><br> -->
-			<%=dish.name%>: <%=dish.thai_name%> <%=dish.spicy%> $ <%=dish.price%>
-			<button class="editDish" style="display:none">Edit</button>
-			<button class="removeDish" style="display:none">Remove</button>
+			<div class="dishText dishName" >
+				<%=dish.name%>
+			</div>
+			<div class="dishText">
+				: <%=dish.thai_name%> 
+			</div>
+			<!-- <div class="dishText <%=dish.spicy%>"
+			</div> -->
+			<div class="dishText">
+				<%=dish.spicy%>
+				$ <%=dish.price%>
+				
+				<button class="editDish btn btn-default btn-xs" style="display:none">Edit</button>
+				<button class="removeDish btn btn-default btn-xs" style="display:none">Remove</button>
+			</div>
 		</span><br>
 	<!--EDIT A DISH-->
 		<span class="editForm<%=dish.id%>" style="display: none">
@@ -125,7 +147,7 @@
 			Category:
 			<input type="text" id="newCategory<%=dish.id%>" value="<%=dish.category_id%>"><br>
 
-			<button class="updateDish">Update</button>
+			<button class="updateDish btn btn-default btn-xs">Update</button>
 		</span>
 	</script>
 	<!--ADD A DISH-->
@@ -145,7 +167,7 @@
 			<input type="text" id="newPrice" placeholder="$ price">
 			<input type="text" id="newImage" placeholder="image url">
 			<input type="text" id="categoryId" placeholder="category id">
-			<button class="add">Add New Dish</button>
+			<button class="add btn btn-default btn-xs">Add New Dish</button>
 		</span>
 	</script>
 
