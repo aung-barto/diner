@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta charset="UTF+e204">
+	<!-- <meta charset="UTF+e204"> -->
 	<!-- BOOTSTRAP CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
@@ -10,6 +10,7 @@
 	<link rel = "stylesheet" type = "text/css" href = "css/style.css" />
 	<!-- FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
 	
 	<title>Thainer</title>
 </head>
@@ -45,16 +46,17 @@
 			<ul class="catList">
 			</ul>
 
-		<!-- ADD NEW DISH -->
+		<!-- ADD NEW DISH FORM -->
 			<div class="addDish">
 			</div>
 
 		<!-- RENDER ALL DISHES -->
 			<ul class="dishes">
 			</ul>
-			
 		</div>
-
+<footer>
+Images from multiple source. Icons from Glyphicons. 2015
+</footer>
 <!-- OPENING PAGE TEMPLATE -->
 	<script type="text/template" id="cover">
 		<div class="row">
@@ -106,7 +108,7 @@
 
 		<div class="dishImage<%=dish.id%> imageLo" style="display:none">
 			<img src="<%=dish.image_url%>"><br>
-			<%=dish.translation%>
+			<p class="translation"><%=dish.translation%></p>
 		</div>
 		<span class="dish<%=dish.id%> ui-widget-content"> 
 			<div class="dishText dishName" >
@@ -114,19 +116,17 @@
 			</div>
 			<div class="dishText">
 				: <%=dish.thai_name%> 
-			</div>
-			<!-- <div class="dishText <%=dish.spicy%>"
-			</div> -->
-			<div class="dishText">
-				<%=dish.spicy%>
 				$ <%=dish.price%>
-				
+			</div>
+			<div class="dishText">
 				<button class="editDish btn btn-default btn-xs" style="display:none">Edit</button>
 				<button class="removeDish btn btn-default btn-xs" style="display:none">Remove</button>
 			</div>
+		<!-- <div class="spice<%=dish.spicy%>"
+		</div> -->
 		</span><br>
 	<!--EDIT A DISH-->
-		<span class="editForm<%=dish.id%>" style="display: none">
+		<span class="editForm<%=dish.id%> " style="display: none">
 			Name: 
 			<input type="text" id="newName<%=dish.id%>" value="<%=dish.name%>">
 			Thai Name: 
@@ -155,9 +155,13 @@
 	<!--ADD A DISH-->
 	<script type="text/template" id="addDishForm">
 		<span class="addForm">
-			<input type="text" id="newName" placeholder="dish name">
-			<input type="text" id="newThaiName" placeholder="dish thai name">
-			<input type="text" id="newTranslation" placeholder="dish translation">
+			<label>Name:</label><br>
+			<input type="text" id="newName" placeholder="dish name"><br>
+			<label>Thai Name:</label><br>
+			<input type="text" id="newThaiName" placeholder="dish thai name"><br>
+			<label>Translation:</label><br>
+			<input type="text" id="newTranslation" placeholder="dish translation"><br>
+			<label>Spicy Level:</label><br>
 			<select id="spiciness">
 				<option value="0">0</option>
 				<option value="1">1</option>
@@ -165,10 +169,13 @@
 				<option value="3">3</option>
 				<option value="4">4</option>
 				<option value="5">5</option>
-			</select>
-			<input type="text" id="newPrice" placeholder="$ price">
-			<input type="text" id="newImage" placeholder="image url">
-			<input type="text" id="categoryId" placeholder="category id">
+			</select><br>
+			<label>Price:</label><br>
+			<input type="text" id="newPrice" placeholder="$ price"><br>
+			<label>Image Url:</label><br>
+			<input type="text" id="newImage" placeholder="image url"><br>
+			<label>Category:</label><br>
+			<input type="text" id="categoryId" placeholder="category id"><br>
 			<button class="add btn btn-default btn-xs">Add New Dish</button>
 		</span>
 	</script>

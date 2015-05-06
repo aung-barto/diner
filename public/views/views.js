@@ -9,6 +9,7 @@ var OpeningView = Backbone.View.extend({
 		$('.links').hide();
 		$('#newCat').hide();
 		$('#newDish').hide();
+		$('lockLock').hide();
 		this.$el.html(this.template());
 		return this;
 	}
@@ -20,7 +21,7 @@ var AllCatView = Backbone.View.extend({
 	initialize: function(){
 		//listening to categories and dishes
 		this.listenTo(this.collection, "sync remove", this.render);
-		this.listenToOnce(dishes, "sync remove");
+		this.listenToOnce(dishes, "sync remove", this.render);
 	},
 
 		//rendering just categories
@@ -71,6 +72,7 @@ var AddCatView = Backbone.View.extend({
 		});
 
 		catNameField.val('');
+		$('.addCatForm').html('');
 	}
 });
 
@@ -78,7 +80,6 @@ var AddCatView = Backbone.View.extend({
 var CategoryView = Backbone.View.extend({
 	tagName: 'div',
 	template1: _.template($('#oneCategory').html()),
-	// template2: _.template($('#manyDishes').html()),
 	// initialize: function(){
 		// this.listenTo(this.collection, "sync remove", this.render);
 	// },
@@ -144,7 +145,7 @@ var CategoryView = Backbone.View.extend({
 		// $('.showCat').'click'(function(){
 		// });
 		dishes.each(function(item){
-			console.log(item.attributes.spicy);
+			// console.log(item.attributes.spicy);
 			if(item.attributes.category_id === this.model.id){
 				//adding matched showDishView to ul
 				$ul.append(new ShowDishView({model: item}).render().$el) ;
@@ -156,6 +157,7 @@ var CategoryView = Backbone.View.extend({
 		return this;
 	}
 });
+
 
 ////////<<<<-------DISHES------->>>>//////////////////////
 var ShowDishView = Backbone.View.extend({
@@ -196,7 +198,7 @@ var ShowDishView = Backbone.View.extend({
 	},
 	
 	editDish: function(){
-		$('span.dish'+this.model.id).remove();
+		// $('span.dish'+this.model.id).remove();
 		$('span.editForm'+this.model.id).show();
 	},
 
@@ -297,13 +299,6 @@ var AddDishView = Backbone.View.extend({
 		priceField.val('');
 		categoryField.val('');
 		imageField.val('');
+		$('.addForm').hide();
 	}
 });
-		// console.log(this.collection);
-		// var groupDish = this.collection.toJSON();
-
-		// this.$el.html('');
-		// // $('.addDish').html('');
-		// Object.keys(groupDish).forEach(function(item){
-		// 	this.$el.append(this.template2({category: this.model, category_dish: groupDish[item]}));
-		// }.bind(this));

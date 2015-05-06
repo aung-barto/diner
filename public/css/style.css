@@ -8,7 +8,7 @@ body {
 }
 
 img {
-	max-width: 500px;
+	width: 500px;
 	height: auto;
 }
 
@@ -19,10 +19,17 @@ img {
 .imageLo {
 	position: absolute;
 	top: 150px;
-	left: 50px;
+	left: 400px;
 	width: 500px;
-	padding-left: 300px;
+/*	padding-left: 300px;*/
 	font-size: 16px;
+	background-color: white;
+}
+
+.translation {
+	width: 400px;
+	font-size: 15px;
+	padding: 10px 0px 0px 15px;
 }
 
 li {
@@ -140,6 +147,23 @@ p.hour {
 	color: #ff0067;
 }
 
+.addCat {
+	position: absolute;
+	right: 20px;
+	top: 140px;
+}
+
+.addForm {
+	position: absolute;
+	right: 20px;
+	top: 140px;
+	width: 180px;
+}
+
+.add {
+	margin-top: 12px;
+}
+
 .catList {
 	line-height: 30px;
 	padding-left: 60px;
@@ -212,28 +236,67 @@ a#newDish:hover {
 	color: #ff0067;
 }
 
-.3 {
+input {
+    font-family: Courier ;
+    border-top-width: 1px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    height: 27px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    padding-left: 5px;
+    padding-right: 2px;
+    margin-bottom: 0px;
+}
+
+footer{
+	font-family: 'Raleway', sans-serif;
+	font-size: 10px;
+	/*color:white;*/
+	bottom: 20px;
+	padding-left: 60px;
+}
+/*.spice0 {
+	background-size: 7px;
+	width: 30px;
+	height: 18px;
+}
+
+.spice1 {
 	background-image: url('../images/glyphicons-23-fire.png');
-	/*background-size: 10px;*/
+	background-size: 7px;
+	background-repeat: no-repeat;
+	width: 30px;
+	height: 10px;
+}
+
+.spice2 {
+	background-image: url('../images/glyphicons-23-fire.png');
+	background-size: 10px;
+	background-repeat: no-repeat;
+	width: 30px;
+	height: 10px;
+}
+
+.spice3 {
+	background-image: url('../images/glyphicons-23-fire.png');
+	background-size: 10px;
+	width: 30px;
+	height: 10px;
+}
+
+.spice4 {
+	background-image: url('../images/glyphicons-23-fire.png');
+	background-size: 10px;
+	width: 45px;
+	height: 10px;
+}
+
+.spice5 {
+	background-image: url('../images/glyphicons-23-fire.png');
+	background-size: 10px;
 	/*background-repeat: no-repeat;*/
-	/*width: 30px;
-	height: 30px;*/
-}
-
-.4 {
-	background-image: url('../images/glyphicons-23-fire.png');
-	background-size: 15px;
-	background-repeat: no-repeat;
-	width: 30px;
-	height: 30px;
-	color: orange;
-}
-
-.5 {
-	background-image: url('../images/glyphicons-23-fire.png');
-	background-size: 20px;
-	background-repeat: no-repeat;
-	width: 30px;
-	height: 30px;
-	color: red;
-}
+	width: 60px;
+	height: 10px;
+}*/
