@@ -250,13 +250,13 @@ input {
     margin-bottom: 0px;
 }
 
-footer{
+/*footer{
 	font-family: 'Raleway', sans-serif;
 	font-size: 10px;
 	/*color:white;*/
-	bottom: 20px;
+	bottom: 0px;
 	padding-left: 60px;
-}
+}*/
 /*.spice0 {
 	background-size: 7px;
 	width: 30px;
