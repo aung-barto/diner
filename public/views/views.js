@@ -4,7 +4,7 @@ var OpeningView = Backbone.View.extend({
 	el: '.open',
 	template: _.template($('#cover').html()),
 	render: function(){
-		$('.background').hide();
+		$('.bgColor').hide();
 		$('.coverImage').show();
 		$('.links').hide();
 		$('#newCat').hide();
@@ -32,7 +32,7 @@ var AllCatView = Backbone.View.extend({
 		$('.addDish').hide();
 		$('.dishes').html('');
 		// //show Add New Category link and form
-		$('.background').show();
+		$('.bgColor').show();
 		$('#newCat').show();
 		$('.addCatForm').show();
 
