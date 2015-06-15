@@ -3,7 +3,7 @@
 Thainer is a SPA Thai restaurant menu built with Express, SQLite3 and Backbone. This project focuses on the front end and user interaction with menu viewing for client side and ability to edit dishes, categories and prices by the site's admin.
 
 ####Specs:
-- Users/Admin should see a lit of categories that are served at the restaurant.
+- Users/Admin should see a list of categories that are served at the restaurant.
 - Admin can create, update and remove price, image, and name and category of dishes. (No authentication at the moment)
 - Users can view changes to the menu right away without reloading.
 - Users can click on a dish name to see what each dish looks like. 
